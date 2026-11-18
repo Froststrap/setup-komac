@@ -45,7 +45,7 @@ if [ -z "$expected" ]; then
   exit 1
 fi
 
-actual="$(sha256sum "$RUNNER_TEMP/$asset" | cut -d' ' -f1)"
+actual="$(sha256sum < "$RUNNER_TEMP/$asset" | cut -d' ' -f1)"
 
 if [ "$expected" != "$actual" ]; then
   echo "setup-komac: checksum mismatch for $asset" >&2
