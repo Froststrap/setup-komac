@@ -1,0 +1,22 @@
+name: Setup komac
+description: Install a pinned Komac release, verify its checksum, and add it to PATH.
+author: Froststrap
+
+inputs:
+  version:
+    description: Komac release version, without the leading "v".
+    required: false
+    default: "2.17.2"
+
+runs:
+  using: composite
+  steps:
+    - name: Install komac
+      shell: bash
+      env:
+        KOMAC_VERSION: ${{ inputs.version }}
+      run: bash "$GITHUB_ACTION_PATH/install.sh"
+
+branding:
+  icon: download
+  color: purple
